@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from src.ServerAdapter import *
+import time
 
 class FlaskServer(ServerAdapter):
     __ip : str
@@ -17,7 +18,16 @@ class FlaskServer(ServerAdapter):
         self.__server.add_url_rule('/file/pfdata', 'get file from client', self.__getPerfettoData, methods=['POST'])
 
     def __getPerfettoData(self):
-        return
+        if 'file' not in request.files:
+            return jsonify({"message" : "Fail to upload file"})
+
+        file = request.files["file"]
+        file.save('./received.txt')
+
+        # Algorithm time
+        time.sleep(30)
+        
+        return jsonify({"message": "File successfully uploaded"})
 
     def __getConfigData(self):
         message = request.args.get('pdata')
