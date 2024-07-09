@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://localhost:34567/api/msg'
+url = 'http://localhost:34567/msg/config'
 
 msg = {
     "pdata" : "jongja",
