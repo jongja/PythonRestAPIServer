@@ -10,7 +10,9 @@ msg = {
 response = requests.get(url, params=msg)
 print(response.json())
 
-with open('./send.txt', "rb") as f:
+send_file = "./send.txt"
+
+with open(send_file, "rb") as f:
     msg = {
         "file" : f,
     }

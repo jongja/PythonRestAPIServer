@@ -27,7 +27,7 @@ class FlaskServer(ServerAdapter):
         # Algorithm time
         time.sleep(30)
         
-        return jsonify({"message": "File successfully uploaded"})
+        return jsonify({"message": "File successfully uploaded, file name : {}".format(file.filename)})
 
     def __getConfigData(self):
         message = request.args.get('pdata')
